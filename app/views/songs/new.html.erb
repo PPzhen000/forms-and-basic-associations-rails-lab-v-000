@@ -7,7 +7,8 @@
   <%= f.label 'Artist Name:' %>
   <%= f.text_field :artist_name %>
   <br />
-  <%= f.collection_select :genre_name, Genre.all, :name, :name %>
+  <%= f.label 'Choose a Genre:' %>
+  <%= f.collection_select :genre_id, Genre.all, :name, :name %>
   <br>
   <input name="category[post_ids][]">
   <%= f.submit %>
