@@ -20,15 +20,15 @@ class Song < ActiveRecord::Base
     self.genre ? self.genre.name : nil
   end
 
-  def note_contents=(contents)
-    contents.each do |content|
-      note = Note.find_by(content: content)
-      self.notes << note
+  def note_contents=(notes)
+    notes.each do |note|
+      if note != ""
+      @note = Note.create(content: note)
+      self.notes << @note
     end
-    # self.note = Note.find_or_create_by(content: content)
   end
 
   def note_contents
-    Note.all.map {|note| note.content}
+    self.notes.map {|note| note.content}
   end
 end
